@@ -29,10 +29,18 @@ function App() {
 
       newResults.push({
         month: i,
-        principal: Math.abs(principal).toLocaleString('es', { maximumFractionDigits: 0 }),
-        interest: Math.abs(interest).toLocaleString('es', { maximumFractionDigits: 0 }),
-        monthlyPayment: Math.abs(monthlyPayment).toLocaleString('es', { maximumFractionDigits: 0 }),
-        remaining: Math.abs(remaining).toLocaleString('es', { maximumFractionDigits: 0 })
+        principal: Math.abs(principal).toLocaleString("es", {
+          maximumFractionDigits: 0,
+        }),
+        interest: Math.abs(interest).toLocaleString("es", {
+          maximumFractionDigits: 0,
+        }),
+        monthlyPayment: Math.abs(monthlyPayment).toLocaleString("es", {
+          maximumFractionDigits: 0,
+        }),
+        remaining: Math.abs(remaining).toLocaleString("es", {
+          maximumFractionDigits: 0,
+        }),
       });
     }
 
@@ -51,14 +59,14 @@ function App() {
       <div className="container text-center my-5">
         <img src={logo} alt="Logo" className="logo" />
       </div>
-      <h2>Calculadora de préstamo</h2>
-      {results.length > 0 && <div class="alert alert-success" role="alert">
-      Calculado con éxito! Cuota mensual <strong>{results[0].monthlyPayment}</strong> Gs.
-      </div>}
-      <form
-        className="w-100 d-flex flex-column form"
-        onSubmit={handleSubmit}
-      >
+      <h3 className="mb-3">Calculadora de préstamo</h3>
+      {results.length > 0 && (
+        <div class="alert alert-success" role="alert">
+          Calculado con éxito! Cuota mensual{" "}
+          <strong>{results[0].monthlyPayment}</strong> Gs.
+        </div>
+      )}
+      <form className="w-100 d-flex flex-column form" onSubmit={handleSubmit}>
         <label>Importe</label>
         <input
           type="number"
@@ -74,7 +82,7 @@ function App() {
           defaultValue={formData.rate}
           onChange={handleChange}
           name="rate"
-          placeholder="Cargue el dato con números, ejemplo si es 15%, cargue 15"
+          placeholder="Ejemplo: Si es 15%, cargue 15"
           required
         ></input>
         <label>Plazo (en meses)</label>
@@ -83,15 +91,15 @@ function App() {
           defaultValue={formData.periods}
           onChange={handleChange}
           name="periods"
-          placeholder="Ejemplo si es para 1 año, cargue 12"
+          placeholder="Ejemplo: Si es 1 año, cargue 12"
           required
         ></input>
         <input type="submit" className="btn btn-primary mt-3 text-white" />
       </form>
 
-      <div className="container rounded-5 mt-4">
+      <div className="container table-responsive-lg mt-4">
         {results.length > 0 && (
-          <table className="table table-striped table-responsive">
+          <table className="table table-striped">
             <thead className="table-primary">
               <tr>
                 <th>Mes</th>
